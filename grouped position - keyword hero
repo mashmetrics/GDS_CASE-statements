@@ -1,0 +1,13 @@
+CASE WHEN REGEXP_MATCH(Position, "1") THEN "Position 1"
+WHEN REGEXP_MATCH(Position, "2") THEN "Position 2-4"
+WHEN REGEXP_MATCH(Position, "3") THEN "Position 2-4"
+WHEN REGEXP_MATCH(Position, "4") THEN "Position 2-4"
+WHEN REGEXP_MATCH(Position, "5") THEN "position 5-9"
+WHEN REGEXP_MATCH(Position, "6") THEN "position 5-9"
+WHEN REGEXP_MATCH(Position, "7") THEN "position 5-9"
+WHEN REGEXP_MATCH(Position, "8") THEN "position 5-9"
+WHEN REGEXP_MATCH(Position, "9") THEN "position 5-9"
+WHEN REGEXP_MATCH(Position, "1*") THEN "position 10-19"
+WHEN REGEXP_MATCH(Position, "2*") THEN "position 20-29"
+ELSE "Other"
+END
