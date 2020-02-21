@@ -1,0 +1,16 @@
+CASE
+WHEN ((Source="direct" AND Medium="(not set)") OR Medium="(none)") THEN "Owned" 
+WHEN REGEXP_MATCH (Source, 'chatkit|messenger.com') OR REGEXP_MATCH (Medium, 'fbmessenger')THEN 'Earned'
+WHEN REGEXP_MATCH (Source, 'criteo') THEN 'Earned'
+WHEN REGEXP_MATCH (Medium, 'email|Email') OR REGEXP_MATCH (Source, 'mail.') THEN 'Earned'
+WHEN REGEXP_MATCH (Source, 'prod84') THEN 'Owned'
+WHEN REGEXP_MATCH (Source, 'checkout.quadpay.com|manage.kmail-lists.com|cdn.shopify.com|primitivereserve.com') THEN 'Owned'
+WHEN REGEXP_MATCH (Source, 'm3facebook') OR REGEXP_MATCH(Medium,'conv') THEN 'Paid'
+WHEN REGEXP_MATCH (Medium, 'cpc') AND REGEXP_MATCH (Source, 'google|bing') THEN 'Paid'
+WHEN (Social Source Referral="Yes" OR REGEXP_MATCH(Medium,"^(social|social-network|social-media|sm|social network|social media)$")) OR REGEXP_MATCH (Source, 'facebook|linkedin|youtube|plus|stack.(exc|ov)|twitter|reddit|quora|google.groups|disqus|slideshare|addthis|(^t.co$)|lnk.in') THEN 'Earned'
+WHEN REGEXP_MATCH (Medium, '^organic$') AND Source = 'google' THEN 'Earned'
+WHEN REGEXP_MATCH (Medium, '^organic$') OR REGEXP_MATCH(Source, 'duckduckgo|yandex') THEN 'Earned'
+WHEN REGEXP_MATCH (Medium, 'display') THEN 'Paid'
+WHEN REGEXP_MATCH (Medium, 'affiliate') THEN 'Paid'
+ELSE 'Earned' 
+END
