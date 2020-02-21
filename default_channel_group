@@ -1,0 +1,11 @@
+CASE
+WHEN ((Source="direct" AND Medium="(not set)") OR Medium="(none)") THEN "Direct"
+WHEN Medium="organic" THEN "Organic Search"
+WHEN (Social Source Referral="Yes" OR REGEXP_MATCH(Medium,"^(social|social-network|social-media|sm|social network|social media)$")) THEN "Social"
+WHEN Medium="email" THEN "Email"
+WHEN Medium="affiliate" THEN "Affiliates"
+WHEN Medium="referral" THEN "Referral"
+WHEN (REGEXP_MATCH(Medium,"^(cpc|ppc|paidsearch)$") AND Ad Distribution Network!="Content") THEN "Paid Search"
+WHEN REGEXP_MATCH(Medium," ^(cpv|cpa|cpp|content-text)$") THEN "Other Advertising"
+WHEN (REGEXP_MATCH(Medium,"^(display|cpm|banner)$") OR Ad Distribution Network="Content") THEN "Display" ELSE "(Other)"
+END
